@@ -17,7 +17,7 @@ IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
 include "Hazel/vendor/GLFW"
 
 project "Hazel"
-	location "Hazel"	
+	location "Hazel"
 	kind "SharedLib"
 	language "C++"
 
@@ -27,7 +27,7 @@ project "Hazel"
 	pchheader "hzpch.h"
 	pchsource "Hazel/src/hzpch.cpp"
 
-	files 
+	files
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
@@ -41,7 +41,7 @@ project "Hazel"
 	}
 
 	links 
-	{
+	{ 
 		"GLFW",
 		"opengl32.lib"
 	}
@@ -51,29 +51,29 @@ project "Hazel"
 		staticruntime "On"
 		systemversion "latest"
 
-		defines 
+		defines
 		{
 			"HZ_PLATFORM_WINDOWS",
 			"HZ_BUILD_DLL"
 		}
 
-		postbuildcommands 
+		postbuildcommands
 		{
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG" 
-		buildoptions "MDd"
+		defines "HZ_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
-	
+
 	filter "configurations:Release"
-		defines "HZ_RELEASE" 
+		defines "HZ_RELEASE"
 		buildoptions "/MD"
 		optimize "On"
-	
+
 	filter "configurations:Dist"
-		defines "HZ_DIST" 
+		defines "HZ_DIST"
 		buildoptions "/MD"
 		optimize "On"
 
@@ -85,7 +85,7 @@ project "Sandbox"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files 
+	files
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
@@ -97,7 +97,7 @@ project "Sandbox"
 		"Hazel/src"
 	}
 
-	links 
+	links
 	{
 		"Hazel"
 	}
@@ -107,22 +107,22 @@ project "Sandbox"
 		staticruntime "On"
 		systemversion "latest"
 
-		defines 
+		defines
 		{
 			"HZ_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG" 
-		buildoptions "MDd"
+		defines "HZ_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
-	
+
 	filter "configurations:Release"
-		defines "HZ_RELEASE" 
+		defines "HZ_RELEASE"
 		buildoptions "/MD"
 		optimize "On"
-	
+
 	filter "configurations:Dist"
-		defines "HZ_DIST" 
+		defines "HZ_DIST"
 		buildoptions "/MD"
 		optimize "On"
