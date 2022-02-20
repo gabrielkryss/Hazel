@@ -35,6 +35,12 @@ project "Hazel"
 		"%{prj.name}/src/**.cpp"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
+	}
+
 	includedirs
 	{
 		"%{prj.name}/src",
@@ -58,8 +64,7 @@ project "Hazel"
 		defines
 		{
 			"HZ_PLATFORM_WINDOWS",
-			"HZ_BUILD_DLL",
-			"GLFW_INLCUDE_NONE" -- doesn't work, need to ask why, might remove this
+			"HZ_BUILD_DLL"
 		}
 
 		postbuildcommands

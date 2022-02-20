@@ -6,7 +6,6 @@
 #include "Hazel/Events/KeyEvent.h"
 
 #include "glad/glad.h"
-#include <GLFW/glfw3.h> // <--- this has to be included after Glad, don't know why, cuz Glad included it already? which causes and error. Tried using GLFW_INCLUDE_NONE in Hazel premake file but didn't work.
 
 namespace Hazel {
 
